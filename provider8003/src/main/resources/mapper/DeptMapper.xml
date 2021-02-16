@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--命名空间是 包名 + 接口-->
+<mapper namespace="com.fwtai.dao.DeptDao">
+
+    <update id="addDept" parameterType="Dept">
+        INSERT INTO dept(dname,db_source) VALUES (#{dname},#{db_source})
+    </update>
+
+    <select id="findById" parameterType="Integer" resultType="Dept">
+        SELECT deptno,dname,db_source FROM dept WHERE deptno = #{deptno}
+    </select>
+
+    <select id="findAll" resultType="Dept">
+        SELECT deptno,dname,db_source FROM dept
+    </select>
+
+</mapper>

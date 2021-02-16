@@ -1,0 +1,11 @@
+
+Hystrix 服务降级处理是在客户端实现完成的,与服务端没有关系
+
+类似于银行的办理窗口的 暂停服务
+
+服务降级将要替换服务熔断的
+
+可以使用 Hystrix 组件的服务降级功能来减少@HystrixCommand的代码量,服务降级详情 com.fwtai.hystrix.DeptHystrixFallbackFactory
+
+本类DeptHystrixFallbackFactory针对接口 com.fwtai.feign.FeignService 里的各个方法进行服务降级,也就是对FeignService的方法每一个熔断机制统一在本类统一处理解决,
+以达到在子模块 provider_hystrix 里的controller层的每个方法的注解@HystrixCommand进行解耦了.还需在com.fwtai.feign.FeignService的注解@FeignClient添加属性fallbackFactory=本类.class

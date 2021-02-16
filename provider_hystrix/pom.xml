@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>microservicecloud</artifactId>
+        <groupId>com.fwtai</groupId>
+        <version>1.0.1</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>provider_hystrix</artifactId>
+
+    <description>
+        服务提供者,仿照子模块 provider8001,hystrix服务熔断是在服务端进行
+        本子模块是在provider800x中添加了hystrix组件功能
+        Hystrix熔断器|断路器,具有功能:
+        服务降级、
+        快速响应调用调用失败返回预期结果、备选响应(FailBack)
+        服务断路,类似于保险丝的功能、
+        服务限流、
+        接近实时监控、
+        Hystrix组件是在服务提供方的组件、
+        本子模块是Hystrix服务熔断示例,类似于异常通知
+        原理:一旦调用服务出错出异常后并抛出错误信息,会自动调用注解@HystrixCommand标注好的fallbackMethod调用类中的指定的方法
+    </description>
+
+    <dependencies>
+        <!--公共部分-->
+        <dependency>
+            <groupId>com.fwtai</groupId>
+            <artifactId>common</artifactId>
+            <version>1.0.1</version>
+        </dependency>
+        <!--接口的定义-->
+        <dependency>
+            <groupId>com.fwtai</groupId>
+            <artifactId>api</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+        <!--hystrix 断路器 | 熔断器 | 保险丝-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+            <version>1.4.6.RELEASE</version>
+        </dependency>
+        <!--数据库配置-->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.15</version>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid-spring-boot-starter</artifactId>
+            <version>1.1.16</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>1.3.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>1.5.9.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <version>1.5.9.RELEASE</version>
+        </dependency>
+    </dependencies>
+</project>

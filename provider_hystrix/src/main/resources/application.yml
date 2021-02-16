@@ -1,0 +1,35 @@
+server:
+  port: 9001
+mybatis:
+  config-location: classpath:mybatis/mybatis.xml
+  type-aliases-package: com.fwtai.entities
+  mapper-locations: classpath:mapper/*.xml
+spring:
+  application:
+    name: deptProvider #被调用的实例名|标识为服务提供者的实例名|注册名,在Ribbon集群之后,调用时不需要加端口号,且集群的所有节点的name的值必须是一致!!!
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.3.166:3307/microcloud01?useUnicode=true&characterEncoding=utf-8&useSSL=false&allowMultiQueries=true&serverTimezone=Asia/Shanghai
+    username: root
+    password: rootFwtai
+    dbcp2:
+      min-idle: 5
+      initial-size: 5
+      max-total: 32
+      max-wait-millis: 200
+eureka:
+  client:
+    register-with-eureka: true # 提供者需要注册到注册服务中心去!!!,默认就是true
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/ # http://127.0.0.1:7001/eureka/ 好像也可以的!!!
+  instance:
+    prefer-ip-address: true #访问地址显示IP[显示服务注册的IP及端口号],配置这个之后就不需要配置instance-id
+    instance-id: deptProvider9001-hystrix #自定义hystrix服务名称信息,别名???,显示ip地址时可以不需要本行的配置,配置这个之后就不需要配置prefer-ip-address
+info:
+  app.name: microservicecloud
+  company.name: www.fwtai.com
+  build.artifactId: ${project.artifactId}
+  build.version: ${project.version}
+  build.port: ${server.port}
+  build.desc: 采用feign组件功能的负载均衡算法,并使用了hystrix组件的降级服务

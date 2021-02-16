@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>microservicecloud</artifactId>
+        <groupId>com.fwtai</groupId>
+        <version>1.0.1</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>api</artifactId>
+    <description>接口的定义,方便服务提供者实现本子模块的接口,feign组件和Ribbon组件都是服务消费方的功能</description>
+
+    <dependencies>
+        <!--专为feign添加的依赖,是想通过 接口+注解来调用服务,注意版本号<version>1.4.6.RELEASE</version>,如果报错 nested exception is java.lang.NoClassDefFoundError: org/apache/http/conn/HttpClientConnectionManager 可能是版本号的问题 -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-feign</artifactId>
+            <version>1.4.6.RELEASE</version>
+        </dependency>
+    </dependencies>
+</project>

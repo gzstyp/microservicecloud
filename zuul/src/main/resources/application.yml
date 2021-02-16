@@ -1,0 +1,19 @@
+server:
+  port: 9527
+spring:
+  application:
+    name: zuulGateway
+eureka:
+  client:
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
+  instance:
+    prefer-ip-address: true #访问地址显示IP[显示服务注册的IP及端口号],配置这个之后就不需要配置instance-id
+    instance-id: zuul9527.com # 需要修改host的映射文件,添加如下 127.0.0.1 zuul9527.com
+info:
+  app.name: ${spring.application.name}
+  company.name: www.fwtai.com
+  build.artifactId: ${project.artifactId}
+  build.version: ${project.version}
+  build.desc: 服务提供方,采用feign组件功能的负载均衡算法,并使用了hystrix组件的降级服务

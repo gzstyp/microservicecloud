@@ -1,0 +1,15 @@
+server:
+  port: 81
+spring:
+  application:
+    name: feignConsumer #被调用的实例名|标识为服务提供者的实例名
+eureka:
+  client:
+    register-with-eureka: false # 服务消费者也需要注册到注册服务中心去吗???不需要吧!因为我只管调用即可
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
+  instance:
+    prefer-ip-address: true #访问地址显示IP[显示服务注册的IP及端口号],配置这个之后就不需要配置instance-id
+feign:
+  hystrix:
+    enabled: true #开启hystrix组件的服务降级服务,还需在启动类添加注解 @EnableFeignClients(basePackages = {"com.fwtai"}) 和  @ComponentScan("com.fwtai"),另外在实现接口 FallbackFactory 的服务降级类添加注解 @Component
