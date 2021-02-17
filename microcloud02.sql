@@ -4,7 +4,7 @@
  Source Server         : 192.168.3.166_MySQL5.7.25
  Source Server Type    : MySQL
  Source Server Version : 50725
- Source Host           : 192.168.3.166:3307
+ Source Host           : 192.168.3.66:3306
  Source Schema         : microcloud02
 
  Target Server Type    : MySQL
