@@ -3,9 +3,9 @@ package com.fwtai.service;
 import com.fwtai.api.DeptService;
 import com.fwtai.dao.DeptDao;
 import com.fwtai.entities.Dept;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -19,7 +19,7 @@ import java.util.List;
 @Service
 public class DeptServiceImpl implements DeptService{
 
-    @Autowired
+    @Resource
     private DeptDao deptDao;
 
     @Override
