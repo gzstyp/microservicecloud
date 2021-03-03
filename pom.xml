@@ -25,6 +25,7 @@
 
     <url>http://www.fwtai.com</url>
     <description>
+        不推荐使用
     	基于 spring boot 构建的微服务;
     	分布式分为的同构和异构,本项目适用于异构或同构;
     	已集群版_已添加feign负载均衡算法_服务熔断_服务降级_已加入zuul但未配置访问规则
