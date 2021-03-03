@@ -26,7 +26,10 @@ public class DeptHystrixFallbackFactory implements FallbackFactory<FeignService>
     @Override
     public FeignService create(final Throwable cause){
         return new FeignService(){
-
+            @Override
+            public boolean add(final Dept dept){
+                return false;
+            }
             @Override
             public Dept get(Integer id){
                 final Dept dept = new Dept();
@@ -39,11 +42,6 @@ public class DeptHystrixFallbackFactory implements FallbackFactory<FeignService>
             @Override
             public List<Dept> list(){
                 return null;
-            }
-
-            @Override
-            public boolean add(final Dept dept){
-                return false;
             }
         };
     }
